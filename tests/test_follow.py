@@ -66,14 +66,14 @@ class TestFollowAPI:
 
     @pytest.mark.django_db(transaction=True)
     def test_follow_create(self, user_client, follow_2, follow_3, user, user_2, another_user):
+        print(1)
         follow_count = Follow.objects.count()
-
         data = {}
         response = user_client.post('/api/v1/follow/', data=data)
         assert response.status_code == 400, (
             'Проверьте, что при POST запросе на `/api/v1/follow/` с неправильными данными возвращается статус 400'
         )
-
+        print(2)
         data = {'following': another_user.username}
         response = user_client.post('/api/v1/follow/', data=data)
         assert response.status_code == 201, (
@@ -85,6 +85,7 @@ class TestFollowAPI:
         msg_error = (
             'Проверьте, что при POST запросе на `/api/v1/follow/` возвращается словарь с данными новой подписки'
         )
+        print(3)
         assert type(test_data) == dict, msg_error
         assert test_data.get('user') == user.username, msg_error
         assert test_data.get('following') == data['following'], msg_error
@@ -92,13 +93,13 @@ class TestFollowAPI:
         assert follow_count + 1 == Follow.objects.count(), (
             'Проверьте, что при POST запросе на `/api/v1/follow/` создается подписка'
         )
-
+        print(4)
         response = user_client.post('/api/v1/follow/', data=data)
         assert response.status_code == 400, (
             'Проверьте, что при POST запросе на `/api/v1/follow/` '
             'на уже подписанного автора возвращается статус 400'
         )
-
+        print(5)
         data = {'following': user.username}
         response = user_client.post('/api/v1/follow/', data=data)
         assert response.status_code == 400, (
