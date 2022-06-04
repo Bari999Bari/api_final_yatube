@@ -35,6 +35,11 @@ class Post(models.Model):
         help_text='Картинка для описания поста'
     )
 
+    class Meta:
+        # со знаком минус для обратной сортировки тест не проходит
+        ordering = ('pub_date',)
+        verbose_name = 'Post'
+
     def __str__(self):
         return self.text
 
