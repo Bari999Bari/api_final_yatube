@@ -36,7 +36,6 @@ class Post(models.Model):
     )
 
     class Meta:
-        # со знаком минус для обратной сортировки тест не проходит
         ordering = ('pub_date',)
         verbose_name = 'Post'
 
