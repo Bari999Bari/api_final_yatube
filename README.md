@@ -15,7 +15,7 @@ git clone https://github.com/Bari999Bari/api_final_yatube.git
 ```
 
 ```
-cd kittygram
+cd api_final_yatube
 ```
 
 Cоздать и активировать виртуальное окружение:
@@ -50,5 +50,12 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-### Авторы
-Рафаэль Асланян, Алексей Кашлинов
+### Примеры:
+
+Примеры и инструкцию можмо посмотреть тут:
+http://127.0.0.1:8000/redoc/
+
+
+
+### Автор
+Рафаэль Асланян
